@@ -1,12 +1,20 @@
 import React from 'react';
 
 const BookingForm = () => {
+    const [date, setDates] = useState("");
+    const handleChange = (e) => {
+        setDate(e);
+
+    }
     return (
         <header>
             <section>
                 <form>
                     <fieldset>
-                        <div></div>
+                        <div>
+                            <label htmlFor='book-date'>Choose Date</label>
+                            <input id='book-date' value={date} onChange={(e) => handleChange(e.target.value)} type='date' required/>
+                        </div>
                     </fieldset>
                 </form>
             </section>
