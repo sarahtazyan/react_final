@@ -10,7 +10,7 @@ const Header = () => {
                     <h3>Chicago</h3>
                     <p>Family Owned Restourant</p>
                     <Link to="/booking"><button aria-label='On-Click'>Reserve a Table</button></Link>
-                </div>
+                </div> 
             </section>
 
         </header>
