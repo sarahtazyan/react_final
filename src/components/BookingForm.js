@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 
 const BookingForm = (props) => {
     const [date, setDate] = useState("");
-    const [time, setTime] = useState("");
+    const [times, setTimes] = useState("");
     const [guests, setGuests] = useState("");
-    const [occasion, setOccasion] = useState(""); 
+    const [occasion, setOccasion] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        props.SubmitForm(e);
         // Do something with the form data or dispatch an action
     }
 
     const handleChange = (e) => {
-        setDate(e.target.value); // Set the value of the date state
-        // props.dispatch(e);  // Dispatch the event to update Redux
+        setDate(e.target.value);
+        props.dispatch(e);
     };
 
     return (
@@ -22,11 +23,49 @@ const BookingForm = (props) => {
                 <form onSubmit={handleSubmit}>
                     <fieldset>
                         <div>
-                            <label htmlFor='book-date'>Choose Date</label>
+                            <label htmlFor='book-date'>Choose Date:</label>
                             <input id='book-date' value={date} onChange={handleChange} type='date' required/>
                         </div>
+
                         {/* Time field */}
+                       <div>
+                       <label htmlFor='book-time'>Choose Time:</label>
+                       <select id="book-time" value={times} onChange={(e) => setTimes(e.target.value)}>
+                            <option value="">Select a Time</option>
+                            {
+                                props.availableTimes.availableTimes.map(availableTimes => {return <option key={availableTimes}>{availableTimes}</option>})
+                            }
+
+                       </select>
+                       </div>
+
+                       {/* guests field */}
+                       <div>
+                        <label htmlFor='book-guests'>Number of Guests:</label>
+                        <input id='book-guests' min='1' value={guests} onChange={(e) => setGuests(e.target.
+                        value)}/>
+                       </div>
+
+
+                       {/* occassion field */}
+                       <div>
+                        <label htmlFor='book-occasion'>Occasion:</label>
+                        <select id='book-occasion' key={occasion} value={occasion} onChange={e => setOccasion 
+                        (e.target.value)}>
+                            <option>Party</option>
+                            <option>Anniversary</option>
+                            <option>Other</option>
+
+                        </select>
+                       </div>
+
+                       {/* Submit */}
+                       <div className='btnReceive'>
+                        <input aria-label='On Click' type='submit' value={"Make Your Reservation"}/>
+                       </div>
+
                     </fieldset>
+
                 </form>
             </section>
         </header>
