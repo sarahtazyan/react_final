@@ -8,7 +8,7 @@ const BookingForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.SubmitForm(e);
+        props.submitForm(e);
         // Do something with the form data or dispatch an action
     }
 
